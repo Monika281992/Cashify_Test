@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-04-10T14:24:08 IST" name="Default suite" finished-at="2020-04-10T14:24:11 IST" duration-ms="3274">
+    <groups>
+    </groups>
+    <test started-at="2020-04-10T14:24:08 IST" name="Default test" finished-at="2020-04-10T14:24:11 IST" duration-ms="3274">
+      <class name="API.jsonvalidation">
+        <test-method signature="getresponse()[pri:0, instance:API.jsonvalidation@402e37bc]" started-at="2020-04-10T14:24:08 IST" name="getresponse" finished-at="2020-04-10T14:24:11 IST" duration-ms="3201" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getresponse -->
+      </class> <!-- API.jsonvalidation -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
