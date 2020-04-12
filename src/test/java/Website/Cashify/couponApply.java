@@ -1,3 +1,6 @@
+// 2 apply cashify10 coupon and consider it will add 10% discount ,so check coupon amount and total price after that
+
+
 package Website.Cashify;
 
 import org.openqa.selenium.By;
