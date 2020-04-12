@@ -1,3 +1,6 @@
+//-3 consider there is a button next to every cart item that can remove items from the cart. remove one item and check the discount
+
+
 package Website.Cashify;
 
 import org.openqa.selenium.By;
