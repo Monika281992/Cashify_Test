@@ -1,4 +1,3 @@
-
 // check total value calculated is right/wrong, 
 
 package Website.Cashify;
@@ -46,4 +45,18 @@ public class Carttotal extends Base {
 	   Assert.assertTrue(DT==Actualtotal);
 	   
 	}
+
+	@AfterTest
+	public void driverclose () {
+		driver.close();
 	}
+	
+	}
+		     
+		      
+		
+	
+	
+
+  
+
