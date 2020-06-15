@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import elementsList.WebElements;
 import junit.framework.Assert;
 
-public class DiscountvalueChacek extends Base {
+public class DiscountAmountCheck extends Base {
    
 	WebElements se = new WebElements(driver);
 	@Test
