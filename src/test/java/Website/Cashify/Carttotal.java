@@ -1,6 +1,12 @@
+
+// check total value calculated is right/wrong, 
+
 package Website.Cashify;
 
 import org.testng.annotations.Test;
+
+import elementsList.WebElements;
+
 import java.sql.Driver;
 
 import org.junit.Assert;
@@ -14,24 +20,17 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Carttotal {
+public class Carttotal extends Base {
 	
-	public WebDriver driver;
-	String URL = "https://getbootstrap.com/docs/4.4/examples/checkout/";
-	String driverfilepath = "//Users//monikachaudhary//Downloads//chromedriver";
-	@BeforeTest
-	public void browserinititae(){
-		System.setProperty("webdriver.chrome.driver", driverfilepath);
-        driver = new  ChromeDriver();
-	}
+	WebElements se = new WebElements(driver);
+	
 	@Test 
 	public void Cartvalue() {
-		driver.get(URL);
-		String totalitem = driver.findElement(By.xpath("//span[@class='badge badge-secondary badge-pill']")).getText();
+		String totalitem = se.totalitem().getText();
 	    int items =Integer.parseInt(totalitem);  
 	    System.out.println("Total items in cart = " + totalitem );
 	    int Actualtotal = 0;
-	    WebElement table = driver.findElement(By.xpath("//div[@class='col-md-4 order-md-2 mb-4']"));
+	    WebElement table = se.Yourcart();
 	    int count =	table.findElements(By.xpath("//div[@class='row']//li//span")).size();
 	    for (int i =0;i<count-1;i++) {
 		 String value= table.findElements(By.xpath("//div[@class='row']//li//span")).get(i).getText();
@@ -40,23 +39,11 @@ public class Carttotal {
 		 Actualtotal = Actualtotal + newvalue;
 	   }
 	   System.out.println("total = " + Actualtotal);
-	   String Displayedtotal = driver.findElement(By.xpath("//div[@class='row']//li[5]/strong")).getText();
+	   String Displayedtotal = se.totalcartvalue().getText();
 	   System.out.println("Total displyed in cart = " + Displayedtotal);
 	   String alteredprice = Displayedtotal.replace("$", "");
 	   int DT=  Integer.parseInt(alteredprice);
 	   Assert.assertTrue(DT==Actualtotal);
 	   
 	}
-	@AfterTest
-	public void driverclose () {
-		driver.close();
 	}
-	
-	}
-		     
-		      
-		
-	
-	
-
-  

@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-04-10T14:24:08 IST" name="Default suite" finished-at="2020-04-10T14:24:11 IST" duration-ms="3274">
+  <suite name="Default suite" duration-ms="2372" started-at="2020-06-12T12:00:24 IST" finished-at="2020-06-12T12:00:27 IST">
     <groups>
     </groups>
-    <test started-at="2020-04-10T14:24:08 IST" name="Default test" finished-at="2020-04-10T14:24:11 IST" duration-ms="3274">
-      <class name="API.jsonvalidation">
-        <test-method signature="getresponse()[pri:0, instance:API.jsonvalidation@402e37bc]" started-at="2020-04-10T14:24:08 IST" name="getresponse" finished-at="2020-04-10T14:24:11 IST" duration-ms="3201" status="PASS">
+    <test name="Default test" duration-ms="2372" started-at="2020-06-12T12:00:24 IST" finished-at="2020-06-12T12:00:27 IST">
+      <class name="Website.Cashify.Carttotal">
+        <test-method status="PASS" signature="browserinitiate()[pri:0, instance:Website.Cashify.Carttotal@7c137fd5]" name="browserinitiate" is-config="true" duration-ms="1583" started-at="2020-06-12T12:00:24 IST" finished-at="2020-06-12T12:00:26 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getresponse -->
-      </class> <!-- API.jsonvalidation -->
+        </test-method> <!-- browserinitiate -->
+        <test-method status="PASS" signature="Cartvalue()[pri:0, instance:Website.Cashify.Carttotal@7c137fd5]" name="Cartvalue" duration-ms="496" started-at="2020-06-12T12:00:26 IST" finished-at="2020-06-12T12:00:26 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Cartvalue -->
+        <test-method status="PASS" signature="broserclose()[pri:0, instance:Website.Cashify.Carttotal@7c137fd5]" name="broserclose" is-config="true" duration-ms="211" started-at="2020-06-12T12:00:26 IST" finished-at="2020-06-12T12:00:27 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- broserclose -->
+      </class> <!-- Website.Cashify.Carttotal -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

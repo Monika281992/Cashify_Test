@@ -1,3 +1,5 @@
+// 2. apply cashify10 coupon and consider it will add 10% discount ,so check coupon amount and total price after that
+
 package Website.Cashify;
 
 import org.openqa.selenium.By;
@@ -8,64 +10,48 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import elementsList.WebElements;
 import junit.framework.Assert;
 
-public class couponApply {
+public class couponApply extends Base {
 	
-	public WebDriver driver;
-	String URL = "https://getbootstrap.com/docs/4.4/examples/checkout/";
-	String driverfilepath = "//Users//monikachaudhary//Downloads//chromedriver";
-	
-	@BeforeTest
-	public void browserinititae(){
-		System.setProperty("webdriver.chrome.driver", driverfilepath);
-        driver = new  ChromeDriver();
-	}
-	@Test 
+	WebElements se = new WebElements(driver);
+    @Test 
 	public void couponapply() {
-		driver.get(URL);
-		driver.findElement(By.xpath("//input[@placeholder='Promo code']")).sendKeys("cashify10");
-        driver.findElement(By.xpath("//button[contains(text(),'Redeem')]")).click();
-        WebElement cartvalue = driver.findElement(By.xpath("//div[@class='row']//li[5]/strong"));
-        WebElement discount = driver.findElement(By.xpath("xpath of webelement where coupon code amount is written"));
-        
+		
         //get cart value before coupon
-        String initialcarttotal = cartvalue.getText();
+        String initialcarttotal = se.totalcartvalue().getText();
         System.out.println("Cart value is  = " + initialcarttotal);
         String Cartbeforecoupon = initialcarttotal.replace("$", "");
         int initialcartvelue=  Integer.parseInt(Cartbeforecoupon);
         
-        //Get coupon amount
-        //will set coupon amount = 2
-        
-        String Discount= discount.getText();
+        //Apply coupon
+        se.promocode().sendKeys("cashify10");
+        se.Redeem().click();
+        //Get given discount amount
+        String Discount= se.DisountAmount().getText();
         String alteredprice = Discount.replace("$", ""); 
-        int Discountvalue = Integer.parseInt(alteredprice);
-        int GivenDiscountvalue = 2;
-        
+        double GivenDiscountvalue = Double.parseDouble(alteredprice);   
+       
         //get expected discount value 
-        int expecteddiscount = initialcartvelue/10; //expected 10% discount
+        double expectedDiscount = (double) initialcartvelue/10;   ///expected discount is 2.5(25*10)/100
+ 
+        //Assert on discount value
+        Assert.assertEquals(expectedDiscount, GivenDiscountvalue);
         
-        //Get cart value after coupn applied
-        //will set the total cartvalue = 18 for this testcase (20-2 =18)
+        //Get cart value after coupon applied
+        //will set the total cartvalue = 22.5 for this testcase (25-2.5 =22.5)
         
-        String carttotal = cartvalue.getText();
+        String carttotal = se.totalcartvalue().getText();
         System.out.println("Total displyed in cart = " + carttotal);
         String Cartvalue = carttotal.replace("$", "");
-        int Cartvalueint=  Integer.parseInt(Cartvalue);
-        int aftercouponcart = 18; // this is the amount we will get after applying coupon
+        double aftercouponcartvalue=  Double.parseDouble(Cartvalue);   //aftercouponcart = 22.5
         
         //get expected cart value
+        double expectedcartvalue = initialcartvelue-expectedDiscount;
         
-        int expectedcartvalue = initialcartvelue-expecteddiscount;
-        
-        int givencartvalue = initialcartvelue-GivenDiscountvalue;
-        
-        Assert.assertEquals(expectedcartvalue, givencartvalue);
+        //Assert on cart value after discount
+        Assert.assertEquals(expectedcartvalue, aftercouponcartvalue);
    }
-	@AfterTest
-	public void driverclose() {
-		driver.close();
-	}
 
 }
